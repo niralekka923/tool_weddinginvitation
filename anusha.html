@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Animated Background</title>
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+<body>
+
+
+
+
+    <canvas id="heartCanvas"></canvas>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="mood.mp3" type="audio/mpeg">
+        आपका ब्राउज़र ऑडियो टैग को सपोर्ट नहीं करता है।
+    </audio>
+
+
+
+    <div class="music-controller">
+        <span class="status-text" id="musicStatus">Muted</span>
+        <label class="switch">
+            <input type="checkbox" id="musicToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+
+
+    <div class="quiz-wrapper">
+        <div class="quiz-card" id="quizCard">
+
+
+            <div class="card-content" id="mainQuizUI">
+                <div class="box-left">
+                    <div class="question-container">
+                        <h2 id="questionText">सवाल लोड हो रहा है...</h2>
+                    </div>
+                    <div class="options-container" id="optionsBox">
+                        <button class="option-btn" id="optA" onclick="selectOption(0)"></button>
+                        <button class="option-btn" id="optB" onclick="selectOption(1)"></button>
+                    </div>
+                    <button id="submitBtn" onclick="submitAnswer()" disabled>Submit</button>
+                </div>
+
+                <div class="box-right">
+                    <div class="response-box" id="responseDisplay">
+                        सही विकल्प चुनकर सबमिट करें...
+                    </div>
+                    <button id="nextBtn" onclick="nextQuestion()" disabled>Next &raquo;</button>
+                </div>
+            </div>
+
+            <div class="final-container" id="finalMsg" style="display: none;">
+                
+                <p>
+                    HAPPY VALENTINE'S DAY ANUSHA 🤗
+                </p>
+                <p>
+                    <br> your gift is here
+                </p>
+                <a href="https://youtube.com/shorts/TMDl5xhjgIE?si=Tup3Hl7WNehYfUTs" target="_blank" class="yt-link">Open 💌</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>

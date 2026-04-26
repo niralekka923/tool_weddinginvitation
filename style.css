@@ -1,0 +1,277 @@
+/* मार्जिन और पैडिंग को पूरी तरह खत्म करना */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* स्क्रॉल बार छुपाने के लिए */
+    background-color: #1a0105;
+    /* गहरा रेड/ब्लैक थीम */
+    font-family: 'Arial', sans-serif;
+}
+
+#heartCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* ताकि कंटेंट इसके ऊपर रहे */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* कंट्रोलर को टॉप राइट में फिक्स करना */
+.music-controller {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    /* हल्का ट्रांसपेरेंट */
+    padding: 10px 15px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    /* ग्लास इफेक्ट */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.status-text {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* टॉगल स्विच का मुख्य ढांचा */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+/* चेकबॉक्स को छुपाना */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* स्लाइडर की डिजाइन */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* एक्टिव होने पर रंग (Unmute) */
+input:checked + .slider {
+    background-color: #ff4d6d;
+    /* लव थीम से मैच करता हुआ पिंक/रेड */
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* quiz ---------------*/
+
+/* Container adjustments */
+.quiz-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 800px;
+    /* चौड़ाई बढ़ाई गई ताकि दो बॉक्स आ सकें */
+}
+
+.quiz-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    min-height: 400px;
+}
+
+/* Flex layout for two boxes */
+.card-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* मोबाइल के लिए */
+}
+
+.box-left, .box-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+    /* Fixed Height */
+}
+
+/* Question Area */
+.question-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    height: 120px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+#questionText {
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Options Styling */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-btn {
+    height: 50px;
+    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff4d6d;
+    transition: 0.3s;
+}
+
+.option-btn.selected {
+    background: #ff4d6d;
+    color: #fff;
+    box-shadow: 0 0 15px #ff4d6d;
+}
+
+/* Buttons Style */
+#submitBtn, #nextBtn {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#submitBtn {
+    background: #fff;
+    color: #333;
+}
+#submitBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#nextBtn {
+    background: #ff4d6d;
+    color: white;
+    margin-top: 15px;
+}
+#nextBtn:disabled {
+    opacity: 0.2;
+}
+
+/* Response Box Area */
+.response-box {
+    flex-grow: 1;
+    background: rgba(255, 77, 109, 0.15);
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Final Message Styling */
+.final-container {
+    text-align: center;
+    color: white;
+    padding: 40px 10px;
+}
+
+.final-container p {
+    font-size: 14px;
+    font-family: roboto;
+}
+
+.yt-link {
+    display: inline-block;
+    margin-top: 20px;
+    background: #ff0000;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
